@@ -2,34 +2,34 @@ pwd
 
 ls
 
-wget https://raw.githubusercontent.com/futurexskill/bigdata/master/retailstore.csv
+wget https://raw.githubusercontent.com/firubigdata/bigdata/master/retailstore.csv
 
 ls 
 
 hadoop fs -ls
 
-hadoop fs -mkdir /user/futurexskill
+hadoop fs -mkdir /user/firubigdata
 
-hadoop fs -mkdir /user/futurexskill/data
+hadoop fs -mkdir /user/firubigdata/data
 
 hadoop fs -ls
 
-hadoop fs -put retailstore.csv /user/futurexskill/data
+hadoop fs -put retailstore.csv /user/firubigdata/data
 
-hadoop fs -ls /user/futurexskill/data
+hadoop fs -ls /user/firubigdata/data
 
 
-hadoop fs -cat /user/futurexskill/data/retailstore.csv
+hadoop fs -cat /user/firubigdata/data/retailstore.csv
 
-hadoop fs -rm /user/futurexskill/data/retailstore.csv
+hadoop fs -rm /user/firubigdata/data/retailstore.csv
 
 ls
 
-hadoop fs -put retailstore.csv /user/futurexskill/data
+hadoop fs -put retailstore.csv /user/firubigdata/data
 
-hadoop fs -ls /user/futurexskill/data
+hadoop fs -ls /user/firubigdata/data
 
-hadoop fs -cat /user/futurexskill/data/retailstore.csv
+hadoop fs -cat /user/firubigdata/data/retailstore.csv
 ===================================================
 
 
@@ -41,7 +41,7 @@ show databases;
 
 use futurex;
 
-create table retailcust (age INT, salary FLOAT,gender String,country String, purchased String) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION '/user/futurexskill/data/' TBLPROPERTIES ("skip.header.line.count"="1") ;
+create table retailcust (age INT, salary FLOAT,gender String,country String, purchased String) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION '/user/firubigdata/data/' TBLPROPERTIES ("skip.header.line.count"="1") ;
 
 show tables;
 
@@ -52,18 +52,18 @@ select age, country from retailcust where salary > 20000;
 drop table retailcust;
 
 dfs -ls data/
-dfs -ls /user/futurexskill/data/
+dfs -ls /user/firubigdata/data/
 
-create external table retailcustext (age INT, salary FLOAT,gender String,country String, purchased String) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION '/user/futurexskill/data/' TBLPROPERTIES ("skip.header.line.count"="1") ;
+create external table retailcustext (age INT, salary FLOAT,gender String,country String, purchased String) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION '/user/firubigdata/data/' TBLPROPERTIES ("skip.header.line.count"="1") ;
 
 select * from retailcustext;
 
 drop table retailcustext;
 
-dfs -ls /user/futurexskill/data/
+dfs -ls /user/firubigdata/data/
 
 
 
-dfs -ls /user/futurexskill/data/retailstore.csv
+dfs -ls /user/firubigdata/data/retailstore.csv
 
 
